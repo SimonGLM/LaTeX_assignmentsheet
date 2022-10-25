@@ -17,10 +17,10 @@
 
 \RequirePackage{xifthen}
 % \RequirePackage{chngcntr} % for per- chapter counters
-\RequirePackage[margin=2.5cm]{geometry} % for page and margins 
+\RequirePackage[top=3cm,right=2.5cm,bottom=2.5cm,left=2.5cm,footskip=10pt]{geometry} % for page and margins 
 \RequirePackage{changepage} % adjustwidth env
-\RequirePackage[headsepline]{scrlayer-scrpage} % KOMAscript page def
-\setlength{\headheight}{1.5cm}
+\RequirePackage{fancyhdr} % KOMAscript page def
+% \setlength{\headheight}{1.5cm}
 % \setlength{\columnsep}{25pt}
 % \setlength{\columnseprule}{0.4pt}
 
@@ -82,51 +82,51 @@ counterwithin=sheet]{assignment}
 \fi
 
 % Footer descr.
-\cfoot*{\thepage}
+% \cfoot*{\thepage}
+\makeatletter
+\renewcommand{\maketitle}{
+  \addtolength{\headheight}{7mm}
+  \addtolength{\topmargin}{-0mm}
 
-% Header descr.
-% TODO: Redo this header definition in \maketitle
-% A header streching multiple lines pushes footer off the page
-\ihead{
+  % Header descr.
+  \fancyhead[L]{
   \ifx\@course\empty
   \else
-    {\Large\textbf{\@course}\par}
-  \fi
-  \vspace{3mm}
+    {\Large\textbf{\@course}}
+  \fi\\\vspace{3mm}
   \ifx\@lecturer\empty
   \else
     {\large\@lecturer}
   \fi
+  }
+  \fancyhead[C]{
+    \ifx\@sheetnr\empty
+    \else
+      {\large\textbf{\sheetname~\@sheetnr}}
+    \fi
+    \ifx\@deadline\empty
+    \else
+      \\
+      {\deadlinename: \@deadline}
+    \fi
+  }
+  \fancyhead[R]{
+    \ifx\@faculty\empty
+    \else
+      {\Large\textbf{\@faculty}\\\vspace{3mm}}
+    \fi
+    \ifx\@author\empty
+    \else
+      {\@author}
+    \fi
+    \ifx\@matrnr\empty
+    \else
+      {\\\@matrnr}
+    \fi
+  }
+  % \fancyfoot{}
+  % \fancyfoot[C]{\thepage}
+  \pagestyle{fancy}
 }
-\chead{
-  \ifx\@sheetnr\empty
-  \else
-    {\large\textbf{\sheetname~\@sheetnr}}
-  \fi
-  \ifx\@deadline\empty
-  \else
-    \\
-    {\deadlinename: \@deadline}
-  \fi
-}
-\ohead{
-  \ifx\@faculty\empty
-  \else
-    {\Large\textbf{\@faculty}\par\vspace{3mm}}
-  \fi
-  \ifx\@author\empty
-  \else
-    {\@author}
-  \fi
-  \ifx\@matrnr\empty
-  \else
-    {\par\@matrnr}
-  \fi
-}
-
-
-\renewcommand{\maketitle}{
-  
-}
-
+\makeatother
 
