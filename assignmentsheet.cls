@@ -90,16 +90,18 @@ counterwithin=sheet]{assignment}
 
   % Header descr.
   \fancyhead[L]{
-  \ifx\@course\empty
-  \else
-    {\Large\textbf{\@course}}
-  \fi\\\vspace{3mm}
-  \ifx\@lecturer\empty
-  \else
-    {\large\@lecturer}
-  \fi
+    \sffamily
+    \ifx\@course\empty
+    \else
+      {\Large\textbf{\@course}}
+    \fi\\\vspace{3mm}
+    \ifx\@lecturer\empty
+    \else
+      {\large\@lecturer}
+    \fi
   }
   \fancyhead[C]{
+    \sffamily
     \ifx\@sheetnr\empty
     \else
       {\large\textbf{\sheetname~\@sheetnr}}
@@ -111,6 +113,7 @@ counterwithin=sheet]{assignment}
     \fi
   }
   \fancyhead[R]{
+    \sffamily
     \ifx\@faculty\empty
     \else
       {\Large\textbf{\@faculty}\\\vspace{3mm}}
