@@ -68,6 +68,10 @@ tocnumwidth=2.3em,
 counterwithin=sheet]{assignment}
 \renewcommand{\theassignment}{\assignmentname~\@arabic\c@sheet.\@arabic\c@assignment:} % headings like "Assignment 1.2: Blink text"
 
+\counterwithin*{equation}{assignment}
+\counterwithin*{figure}{assignment}
+\counterwithin*{table}{assignment}
+
 % Language support
 \ifdefined\@english
 \selectlanguage{english}
